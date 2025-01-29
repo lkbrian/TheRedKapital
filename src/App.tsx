@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [direction, setDirection] = useState("enter"); // Keeps track of the direction (enter or leave)
 
-  const toggleNav = () => {
-    setIsOpen(!isOpen);
-  };
-  // const companyName: string = "The Red Kapital";
-  const tagLine: string = "Bridging your fainacial gap";
+  const splashScreenWordings = [
+    {
+      title: "Empowering You, Every Step of the Way!",
+      explanation:
+        "Our loaning process is designed to support you at every stage, making your financial journey smoother and more accessible.",
+    },
+    {
+      title: "Fast, Flexible Loans When You Need Them Most!",
+      explanation:
+        "We offer fast approval and flexible repayment options, ensuring you get the help you need quickly and on your terms.",
+    },
+    {
+      title: "Your Trusted Partner in Financial Freedom!",
+      explanation:
+        "With our expertise and commitment, we’re here to help you gain control over your financial future, providing the resources you need to thrive.",
+    },
+    {
+      title: "Quick, Easy, and Secure Loan Solutions!",
+      explanation:
+        "Get approved for a loan quickly with our easy application process, all while ensuring your information is secure and protected.",
+    },
+  ];
+
+  // const tagLine: string = "Bridging your fainacial gap";
   const productDescriptions = [
     {
       category: "Business Loans",
@@ -90,6 +111,23 @@ function App() {
         "Founded in 2010, The Red Kapital has grown from a small financial service provider into a trusted name in the industry, serving thousands of clients with dedication and expertise.",
     },
   ];
+  const length = splashScreenWordings.length;
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDirection("leave"); // Start moving out
+      setTimeout(() => {
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % length);
+        setDirection("enter"); // Start moving in
+      }, 600); // Wait for the "leave" animation to complete
+    }, 10000); // Change word every 3 seconds
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [length]);
+
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="body--container">
@@ -175,22 +213,29 @@ function App() {
       {/* Main Content */}
       <main>
         {/* Home Section */}
-        <section id="home" className="p-1 min-lg:p-[3rem]">
+        <section id="home" className=" min-h-[40vh] p-1 min-lg:p-[3rem]">
           <div className="home--content">
             <div className="content">
-              <h1>
-                Empowering You,
-                <br /> Every Step of the Way!
+              <h1
+                className={`text-4xl font-bold text-gray-800 transition-all duration-1000 
+          ${
+            direction === "enter"
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-[-60%]"
+          }`}
+              >
+                {splashScreenWordings[currentWordIndex].title}
               </h1>
 
-              <p className="home--explain">
-                Red Kapital is your trusted financial partner, dedicated to
-                offering fast, flexible, and reliable loan solutions designed to
-                empower your journey and support your dreams every step of the
-                way {tagLine}.
-              </p>
-              <p className="home--explain">
-                Fast. Flexible. Reliable Loans Tailored for You.
+              <p
+                className={`home--explain text-4xl font-bold text-gray-800 transition-all duration-1000 
+          ${
+            direction === "enter"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-[100%]"
+          }`}
+              >
+                {splashScreenWordings[currentWordIndex].explanation}
               </p>
             </div>
             {/* <div className="home--shape"></div> */}
