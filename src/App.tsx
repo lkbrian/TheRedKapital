@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
-
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -127,6 +129,40 @@ function App() {
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
+  };
+
+  const form = useRef<HTMLFormElement | null>(null);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!form.current) return;
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: import.meta.env.VITE_PUBLIC_ID,
+        }
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          toast.success("Message sent sucessfully !", {
+            position: "top-right",
+          });
+          form.current?.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          toast.error(
+            "Message failed to send we are working to resolve this error.",
+            {
+              position: "top-right",
+            }
+          );
+        }
+      );
   };
 
   return (
@@ -412,26 +448,34 @@ function App() {
             <h2 className="text-2xl font-bold text-center text-[#7d0800] mb-4">
               Get in Touch
             </h2>
-            <form className="flex flex-col w-[100%] ] mx-auto gap-4">
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="flex flex-col w-[100%] ] mx-auto gap-4"
+            >
               <input
                 type="text"
+                name="full_name"
                 placeholder="Full Name"
                 className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
               />
               <input
                 type="tel"
                 placeholder="Phone Number"
+                name="number"
                 className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
               />
               <textarea
                 placeholder="Message"
                 className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c] resize-none"
                 // rows="4"
+                name="message"
               ></textarea>
               <button
                 type="submit"
@@ -560,6 +604,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <ToastContainer />
       <a
         href="https://api.whatsapp.com/send/?phone=254704807868&text="
         target="_blank"
