@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import Dialog from "./components/Dialog/Dialog";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [direction, setDirection] = useState("enter"); // Keeps track of the direction (enter or leave)
 
@@ -108,9 +109,9 @@ function App() {
         "To be the leading financial partner recognized for innovation, trust, and exceptional customer service, inspiring success for generations.",
     },
     {
-      title: "History",
+      title: "Values",
       content:
-        "Founded in 2010, The Red Kapital has grown from a small financial service provider into a trusted name in the industry, serving thousands of clients with dedication and expertise.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, quia minima esse nisi inventore et itaque blanditiis totam vero nobis, ad consequuntur odit libero. Eaque maiores iusto quasi placeat repellat?",
     },
   ];
   const length = splashScreenWordings.length;
@@ -129,6 +130,9 @@ function App() {
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
+  };
+  const toogleChat = () => {
+    setChatOpen(!chatOpen);
   };
 
   const form = useRef<HTMLFormElement | null>(null);
@@ -344,7 +348,7 @@ function App() {
           />
           <div className=" -z-10 absolute inset-0 bg-gradient-to-r from-[#f7191c] to-[#7d0800] opacity-75"></div>
           <div className="about--container mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl  font-extrabold tracking-tight mb-6">
               Who We Are
             </h2>
             <p className="text-base sm:text-lg  text-white max-w-3xl mx-auto mb-8">
@@ -352,28 +356,6 @@ function App() {
               fast, reliable, and accessible loan solutions to empower
               individuals and businesses.
             </p>
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="flex flex-col items-center text-white rounded-lg p-6 w-full">
-                <h3 className="text-xl sm:text-2xl font-semibold  mb-3">
-                  Mission
-                </h3>
-                <p className="text-sm sm:text-base text-center mb-4">
-                  Our mission is to be the most trusted financial partner,
-                  empowering customers with fast, flexible, and accessible
-                  financial solutions to help them succeed.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-white  rounded-lg p-6 w-full">
-                <h3 className="text-xl sm:text-2xl font-semibold  mb-3">
-                  Vision
-                </h3>
-                <p className="text-sm sm:text-base text-center mb-4">
-                  Our vision is to create an inclusive financial ecosystem where
-                  every individual and business can thrive with the right
-                  support at the right time.
-                </p>
-              </div>
-            </div> */}
           </div>
 
           <div className="cards w-[90%] mx-auto absolute min-lg:w-[80%] flex flex-row flex-nowrap max-sm:flex-col max-sm:relative justify-between rounded-md gap-[1rem] -bottom-4 min-md:-bottom-14 min-lg:-bottom-14">
@@ -400,12 +382,50 @@ function App() {
             ))}
           </div>
         </section>
-
+        <section className="min-h-auto flex flex-row-reverse max-lg:flex-col min-md:min-h-[40vh] px-20">
+          <div className="flex-1  p-4  max-lg: pt-16 min-xl:pt-0">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8 max-sm:text-center">
+              History
+            </h2>
+            <p className="text-[.9rem] w-[70%]">
+              Founded in 2010, The Red Kapital has grown from a small financial
+              service provider into a trusted name in the industry, serving
+              thousands of clients with dedication and expertise. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Odio, quia minima
+              esse nisi inventore et itaque blanditiis totam vero nobis, ad
+              consequuntur odit libero. Eaque maiores iusto quasi placeat
+              repellat? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Odio, quia minima esse nisi inventore et itaque blanditiis totam
+              vero nobis, ad consequuntur odit libero. Eaque maiores iusto quasi
+              placeat repellat?
+            </p>
+          </div>
+          <div className="flex-1 relative p-4 min-md:pt-20 ">
+            <div className="img h[500px]">
+              <img
+                className="object-contain h-[100%] rounded-md"
+                src="images/Bankgroup.jpg"
+                alt=""
+              />
+              <div className="absolute border-[20px] bg-[#f7191c] text-white right-0 bottom-0 border-white w-[200px] h-[200px] ">
+                <div className="flex flex-col w-[100%] h-[100%] justify-center items-center">
+                  <span className="font-[900] text-6xl">7+</span>
+                  <span className="font-normal -mt-2 text-[1rem]">years</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section id="why-us" className="py-16 md:py-20 bg-white">
           <div className="why--container mx-auto text-center max-w-6xl px-6">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8 ">
               Why Choose Red Kapital?
             </h2>
+            <p className="text-base sm:text-lg   max-w-3xl mx-auto mb-8">
+              Red Kapital is a customer-focused financial partner, providing
+              fast, reliable, and accessible loan solutions to empower
+              individuals and businesses.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div
@@ -428,10 +448,10 @@ function App() {
         {/* Contact Section */}
         <section
           id="contact"
-          className="flex flex-col-reverse lg:flex-row gap-8 mb-0"
+          className="flex flex-col-reverse min-xl:flex-row-reverse mb-0"
         >
           {/* Map Section */}
-          <div className="contact--map w-[100%] h-[450px] flex-1 min-lg:flex-2">
+          <div className="contact--map w-[100%] h-[450px] flex-1 ">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d63821.41328108796!2d36.814923!3d-1.2699330999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1737978315523!5m2!1sen!2ske"
               width="100%"
@@ -444,46 +464,69 @@ function App() {
           </div>
 
           {/* Contact Form Section */}
-          <div className="contact--container w-[100%]  sm:px-[1rem] md:w-[70%] lg:w-[60%] xl:px-[3rem] flex-1  lg:p-2">
-            <h2 className="text-2xl font-bold text-center text-[#7d0800] mb-4">
-              Get in Touch
-            </h2>
-            <form
-              ref={form}
-              onSubmit={sendEmail}
-              className="flex flex-col w-[100%] ] mx-auto gap-4"
-            >
-              <input
-                type="text"
-                name="full_name"
-                placeholder="Full Name"
-                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                name="number"
-                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
-              />
-              <textarea
-                placeholder="Message"
-                className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c] resize-none"
-                // rows="4"
-                name="message"
-              ></textarea>
-              <button
-                type="submit"
-                className="bg-[#f7191c] text-white py-2 px-4 rounded-md hover:bg-[#c71617] transition duration-300"
+          <div className="contact--container w-[96%] gap-3 flex flex-row max-sm:flex-col sm:px-[1rem] md:w-[80%] lg:w-[60%] xl:px-[10px] flex-1  lg:p-2">
+            <div className="flex-1 bg-[#7d0800] text-white rounded-l-md mr-1  p-2 max-sm:rounded-t-md max-sm:mr-0 max-sm:rounded-bl-none">
+              <h2 className="text-2xl font-bold py-2 pb-3 mb-4">Reach us</h2>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-phone-alt text-white text-lg"></i>
+                  <div>
+                    <h3 className="font-semibold text-xl">Call us</h3>
+                    <span>+123 456 7890</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-envelope text-white text-lg"></i>
+                  <span>info@example.com</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-map-marker-alt text-white text-lg"></i>
+                  <span>123 Main St, City, Country</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex-2">
+              {" "}
+              <h2 className="text-2xl  font-bold text-[#7d0800] mb-4">
+                Get in Touch
+              </h2>
+              <form
+                ref={form}
+                onSubmit={sendEmail}
+                className="flex flex-col w-[100%] ] mx-auto gap-4"
               >
-                Submit
-              </button>
-            </form>
+                <input
+                  type="text"
+                  name="full_name"
+                  placeholder="Full Name"
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  name="number"
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c]"
+                />
+                <textarea
+                  placeholder="Message"
+                  className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f7191c] resize-none"
+                  // rows="4"
+                  name="message"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="bg-[#f7191c] text-white py-2 px-4 rounded-md hover:bg-[#c71617] transition duration-300"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
@@ -604,7 +647,19 @@ function App() {
           </div>
         </div>
       </footer>
-      <ToastContainer />
+
+      <div
+        className={`chat--dialog fixed z-[2000] bottom-[120px] right-[40px] max-sm:right-1 h-[500px] w-[350px] rounded-[.3rem] transform ${
+          chatOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-1000 z-40 ${
+          chatOpen ? "visible" : "hidden"
+        }`}
+      >
+        <Dialog open={chatOpen} onClose={setChatOpen} />
+      </div>
+      <button onClick={toogleChat} className="floating--button">
+        <i className="fa-solid fa-message"></i>
+      </button>
       <a
         href="https://api.whatsapp.com/send/?phone=254704807868&text="
         target="_blank"

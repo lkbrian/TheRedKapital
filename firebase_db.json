@@ -1,0 +1,18 @@
+{
+  "conversations": {
+    "conv_12345": {
+      "messages": {
+        "-NfJKy8zZ9P1jD5X3abc": {
+          "text": "Hello, I need help.",
+          "isAdmin": false,
+          "timestamp": "2024-01-31T12:00:00Z"
+        },
+        "-NfJKzK8xP2hT6Y4Mdef": {
+          "text": "Sure, how can I assist you?",
+          "isAdmin": true,
+          "timestamp": "2024-01-31T12:01:00Z"
+        }
+      }
+    }
+  }
+}

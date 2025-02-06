@@ -1,0 +1,81 @@
+.form {
+  box-shadow: none;
+  height: auto;
+}
+.chat--body {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.chat--container-admin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat--container-admin::-webkit-scrollbar-thumb {
+  background-color: #eea4a580; /* Color of the scrollbar thumb */
+  border-radius: 10px;
+}
+
+.chat--container-admin::-webkit-scrollbar-track {
+  background-color: transparent; /* Light background for the scrollbar track */
+  border-radius: 10px; /* Rounded edges for the track */
+}
+
+/* Optional: Style the scrollbar on hover */
+.chat--container-admin::-webkit-scrollbar-thumb:hover {
+  background-color: #dddddd; /* Darker color when hovered */
+}
+.chat--area {
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: flex-end; /* Push items to the bottom */
+  overflow-y: scroll; /* Allow scrolling */
+  gap: 6px;
+  /* margin: 8px 0; */
+  box-sizing: border-box;
+  height: 75%;
+}
+
+.chat--area .message--card {
+  width: 85%;
+  margin: 6px 0;
+  height: auto;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  border-radius: 0.7rem;
+  padding: 6px 8px;
+}
+.message--card .message--timestamp {
+  font-size: 0.65rem;
+}
+.chat--area .right--card {
+  background: #fff;
+  color: #111;
+  border-bottom-right-radius: 0;
+  /* align-self: flex-end; */
+  float: right;
+}
+.chat--area .left--card {
+  background: #7d0800;
+  color: #fff;
+  border-bottom-left-radius: 0;
+  /* align-self: flex-start; */
+  float: left;
+}
+.right--card .message--timestamp {
+  text-align: left;
+  align-self: flex-end;
+}
+
+#textbox {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  resize: none;
+  height: 50px;
+}
+#textbox:focus {
+  border-bottom: 2px solid #f7191c;
+}

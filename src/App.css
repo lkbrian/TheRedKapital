@@ -6,7 +6,6 @@
   font-family: "Outfit", sans-serif;
 }
 
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
@@ -52,7 +51,6 @@ form {
   margin-top: 1rem;
 }
 
-/* Full-width container */
 .body--container {
   width: 100%;
   min-height: 100vh;
@@ -60,11 +58,34 @@ form {
   flex-direction: column;
   position: relative;
 }
-
-/* Header and Navigation */
+.close-icon {
+  font-size: 1rem;
+}
 header {
   display: flex;
   flex-direction: column;
+}
+button.floating--button {
+  background: var(--color-dark-red);
+  color: #fff;
+  height: 50px;
+  width: 45px;
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+}
+.chat--dialog {
+  box-shadow: rgba(247, 25, 29, 0.1) 0px 2px 8px 0px;
+  background: rgb(248, 248, 248);
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+button.floating--button i {
+  color: #fff;
+  font-size: 2rem;
 }
 a.floating--icon {
   background: #25d366;
@@ -179,19 +200,14 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  /* border-radius: 5px; */
 }
 
-/* Footer */
 footer {
-  /* background-color: var(--color-dark-red); */
-  /* color: white; */
   text-align: center;
   padding: 1rem;
   background: #f3f3f3;
 }
 
-/* Main content area */
 main {
   display: flex;
   flex-direction: column;
@@ -219,7 +235,6 @@ section#home {
 .home--content {
   width: 50%;
   position: relative;
-  /* overflow: hidden; */
 }
 
 .home--content .content {
@@ -341,9 +356,6 @@ section#products h2 {
   #home .home--content .content p {
     font-size: 1rem;
   }
-  /* .home--content .content .home--explain {
-    font-size: 0.8rem;
-  } */
   .contact--container {
     padding: 0 1rem;
   }
