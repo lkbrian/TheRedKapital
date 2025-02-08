@@ -29,11 +29,7 @@ const AdminLogin: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 gap-5">
-      <img
-        src="../../../images/RedKapitalLogo.png"
-        className="h-[125px]"
-        alt="Logo"
-      />
+      <img src="../../../images/logo.png" className="h-[125px]" alt="Logo" />
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
         <h2 className="text-2xl font-bold text-[#7d0800] mb-6 text-center">
           Admin Chat Login
@@ -66,7 +62,7 @@ const AdminLogin: React.FC = () => {
             />
           </div>
 
-          <button className="w-full bg-[#f7191d] hover:bg-[#f7191e] text-white font-medium py-2.5 rounded-lg transition-colors">
+          <button className="w-full bg-[#f7191d] hover:bg-[#f7191c] text-white font-medium py-2.5 rounded-lg transition-colors">
             Sign In
           </button>
         </form>

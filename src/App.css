@@ -205,6 +205,7 @@ button {
 footer {
   text-align: center;
   padding: 1rem;
+  padding-bottom: 2px;
   background: #f3f3f3;
 }
 
@@ -217,7 +218,12 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  scroll-margin-top: 110px;
 }
+#contact {
+  scroll-margin-top: 110px;
+}
+
 section#about {
   align-items: start;
 }
@@ -323,6 +329,29 @@ section#products h2 {
   font-size: 2rem;
   font-weight: 800;
   color: var(--color-dark-red);
+}
+
+.textarea--contact::-webkit-scrollbar {
+  width: 4px;
+}
+
+.textarea--contact::-webkit-scrollbar-thumb {
+  background-color: #a71c21; /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  height: 2px;
+}
+
+.textarea--contact::-webkit-scrollbar-track {
+  background-color: transparent; /* Light background for the scrollbar track */
+  border-radius: 10px; /* Rounded edges for the track */
+}
+
+/* Optional: Style the scrollbar on hover */
+.textarea--contact::-webkit-scrollbar-thumb:hover {
+  background-color: #d11c1a; /* Darker color when hovered */
+}
+div#blogs .blog--item {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 @media (min-width: 320px) and (max-width: 576px) {

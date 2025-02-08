@@ -107,7 +107,7 @@ const AdminChat: React.FC = () => {
   return (
     <div className="w-[100%] h-[100vh]  gap-3.5 flex flex-col">
       <nav className="flex flex-row items-center justify-between w-[60%] max-sm:w-[96%] rounded-md min-md:w-[86%] max-lg:w-[86%] min-lg:w-[60%] h-[fit] bg-gray-50  m-auto">
-        <img src="../../../images/RedKapitalLogo.png" className=" h-[80px]" />
+        <img src="../../../images/logo.png" className=" h-[80px]" />
         <button onClick={logout} type="button" className="p-2.5 rounded-md">
           Logout <i className="fa-solid fa-right-from-bracket"></i>
         </button>
