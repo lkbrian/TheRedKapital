@@ -163,6 +163,9 @@ a.floating--icon i {
   font-size: 1rem;
   align-items: center;
 }
+.main--nav .nav--link:target {
+  color: #f7191c;
+}
 
 .main--nav ul {
   display: flex;
@@ -218,10 +221,10 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-margin-top: 110px;
+  scroll-margin-top: 100px;
 }
 #contact {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 100px;
 }
 
 section#about {
@@ -353,7 +356,24 @@ section#products h2 {
 div#blogs .blog--item {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
+section#products .span-element.is-1 {
+  width: 102%;
+  max-width: none;
+  position: absolute;
+  inset: auto auto 0% 50%;
+  transform: translate(-50%, 80%);
+  vertical-align: middle;
+  max-width: 100%;
+  display: inline-block;
+  border: 0;
+}
+section#why-us .span-element.is-2 {
+  width: 35%;
+  max-width: none;
+  position: absolute;
+  inset: 0% auto auto 0%;
+  transform: translate(50%, -5%);
+}
 @media (min-width: 320px) and (max-width: 576px) {
   section#home {
     min-height: 40vh;
@@ -364,6 +384,7 @@ div#blogs .blog--item {
   .main--nav .header--links ul {
     display: none;
   }
+
   .main--nav .menu--icon {
     display: block;
   }

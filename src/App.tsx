@@ -19,7 +19,7 @@ function App() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [direction, setDirection] = useState("enter"); // Keeps track of the direction (enter or leave)
   const [subject, setSubject] = useState("General Inquiry");
-  const [visibleItems, setVisibleItems] = useState(3);
+  const [visibleItems, setVisibleItems] = useState(1);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -160,7 +160,9 @@ function App() {
             <ul>
               {navItems.map((item) => (
                 <li key={item.id} className="">
-                  <a href={item.href}>{item.label}</a>
+                  <a className="nav--link" href={item.href}>
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -244,16 +246,25 @@ function App() {
         </section>
 
         {/* Services Section */}
-        <section id="products" className="py-[1rem]">
-          <h1 className="relative text-4xl text-[#7d0800] border-b-[4px] border-[#f7191c]   pt-4.5 font-[800]">
-            Our Products
-          </h1>
+        <section id="products" className="py-[1rem] ">
+          <div className="relative">
+            <h1 className="relative text-4xl text-[#7d0800] pt-4.5 font-[800]">
+              Our Products
+            </h1>
+            <img
+              src="/images/line.svg"
+              loading="lazy"
+              alt=""
+              className="span-element is-1"
+            />
+          </div>
+
           <p className="py-4 max-w-2xl text-center">
             Our company offers a variety of financing solutions to meet your
             financial needs, including salary advances, business loans, and
             asset financing
           </p>
-          <div className="products--container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:w-[75%] gap-8 mx-auto w-[90%] place-items-center">
+          <div className="products--container grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-[300px_300px_300px] xl:grid-cols-[300px_300px_300px] xl:w-[75%] gap-8 max-lg:gap-20 mx-auto w-[90%] justify-items-center place-items-center justify-center">
             {productDescriptions.map((item, index) => (
               <div
                 key={index}
@@ -270,7 +281,7 @@ function App() {
                   <h4 className="text-lg font-bold text-[#7d0800] text-center mb-2">
                     {item.name}
                   </h4>
-                  <p className="text-gray-600 text-sm text-center mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm text-center mb-4 line-clamp-4">
                     {item.description}
                   </p>
                   <div className="flex flex-row justify-around gap-0.5 w-full">
@@ -371,11 +382,20 @@ function App() {
           </div>
         </section>
 
-        <section id="why-us" className="py-16 md:py-20 bg-[#f2f2f2]">
+        <section id="why-us" className="py-4 bg-[#f2f2f2]">
           <div className="why--container mx-auto text-center max-w-6xl px-6">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8 ">
-              Why Choose Red Kapital?
-            </h2>
+            <div className="relative w-fit mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-extrabold z-[200] text-[#7d0800] pt-4 ">
+                Why Choose Red Kapital?
+              </h2>
+              <img
+                src="/images/oval.svg"
+                loading="lazy"
+                alt=""
+                className="span-element is-2 z-[100]"
+              />
+            </div>
+
             <p className="py-4 max-w-2xl text-center mx-auto">
               Red Kapital is a customer-focused financial partner, providing
               fast, reliable, and accessible loan solutions to empower
@@ -401,8 +421,8 @@ function App() {
           </div>
         </section>
 
-        <div id="contact" className="flex-col w-[100%]">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8 text-center">
+        <div id="contact" className="flex-col w-[100%] py-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] pt-4 text-center">
             Contact us
           </h2>
           <p className="py-4 max-w-2xl text-center mx-auto">
@@ -413,15 +433,15 @@ function App() {
           <section className="flex flex-col-reverse min-xl:flex-row-reverse mb-0">
             {/* Map Section */}
             <div className="contact--map w-[100%] h-[450px] flex-1 ">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7919101113516!2d36.81761597585846!3d-1.2996633356427256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10e3f05157df%3A0x6fe3154c5f0c2ccb!2sLower%20Hill%20Duplex%20Building%2C%20Bunyala%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1738883871080!5m2!1sen!2ske"
-                width="100%"
-                height="100%"
-                className="w-full h-200 lg:h-full border-0"
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <div className="relative w-full h-0 pb-[56.25%]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7919101113516!2d36.81761597585846!3d-1.2996633356427256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10e3f05157df%3A0x6fe3154c5f0c2ccb!2sLower%20Hill%20Duplex%20Building%2C%20Bunyala%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1738883871080!5m2!1sen!2ske"
+                  className="absolute top-0 left-0 w-full h-full border-0"
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
 
             {/* Contact Form Section */}
@@ -560,9 +580,9 @@ function App() {
             </div>
           </section>
         </div>
-        <section id="blogs" className="w-full py-12 bg-[#f9f9f9] flex flex-col">
+        <section id="blogs" className="w-full  bg-[#f9f9f9] flex flex-col py-4">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-2 text-center pt-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800]  text-center pt-4">
               Latest Blogs
             </h2>
             <p className="py-4 mx-auto max-w-2xl text-center self-center">
@@ -663,10 +683,10 @@ function App() {
 
         <section
           id="faqs"
-          className="w-[100%] flex-col mx-auto px-5 bg-white min-h-sceen"
+          className="w-[100%] flex-col mx-auto px-5 py-4 bg-white min-h-sceen"
         >
           <div className="flex flex-col items-center">
-            <h2 className="font-bold text-5xl pt-6 tracking-tight text-[#7d0800]">
+            <h2 className="font-bold text-5xl pt-4 tracking-tight text-[#7d0800]">
               FAQs
             </h2>
             <p className=" text-md mt-3  mx-auto max-w-2xl text-center">
