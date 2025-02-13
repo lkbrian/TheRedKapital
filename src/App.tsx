@@ -44,7 +44,18 @@ function App() {
   const toogleChat = () => {
     setChatOpen(!chatOpen);
   };
-
+  const notify = (message: string) => {
+    toast(message, {
+      style: {
+        backgroundColor: "#7d0800",
+        color: "#fff",
+        fontFamily: "Outfit, sans-serif",
+        fontSize: "14px",
+        padding: "12px 24px",
+        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      },
+    });
+  };
   const form = useRef<HTMLFormElement | null>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,20 +73,13 @@ function App() {
       .then(
         () => {
           console.log("SUCCESS!");
-          toast.success("Message sent sucessfully !", {
-            position: "top-right",
-          });
+          notify("Message sent sucessfully ✔️");
           form.current?.reset();
           setSubject("General Inquiry");
         },
         (error) => {
           console.log("FAILED...", error.text);
-          toast.error(
-            "Message failed to send we are working to resolve this error.",
-            {
-              position: "top-right",
-            }
-          );
+          notify("Failed to send we are working to resolve this error ❌.");
         }
       );
   };
@@ -291,6 +295,9 @@ function App() {
                     <a
                       href="#contact"
                       onClick={() => {
+                        notify(
+                          "Fill out the Get in touch form & someone will reach out to you ✔️"
+                        );
                         setSubject(item.name);
                       }}
                       className="bg-[#f7191c] text-white text-sm font-medium rounded-full px-6 py-2 mt-auto transition"
@@ -319,9 +326,10 @@ function App() {
               Who We Are
             </h2>
             <p className="py-4 max-w-2xl text-center  text-white mx-auto">
-              Red Kapital is a customer-focused financial partner, providing
-              fast, reliable, and accessible loan solutions to empower
-              individuals and businesses.
+              Red Kapital is a financial partner dedicated to meeting the needs
+              of our clients, providing swift, reliable, and easily accessible
+              loan solutions to support both individuals and businesses in
+              achieving their goals.
             </p>
           </div>
 
@@ -355,27 +363,31 @@ function App() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#7d0800] mb-8 max-sm:text-center">
               History
             </h2>
-            <p className="text-[1rem] w-[70%] max-md:mx-auto max-md:w-[96%]">
-              Founded in 2010, The Red Kapital has grown from a small financial
-              service provider into a trusted name in the industry, serving
-              thousands of clients with dedication and expertise. Over the
-              years, we have expanded our reach, consistently delivering
-              innovative financial solutions that empower businesses and
-              individuals alike.
+            <p className="text-[1rem] w-[80%] max-md:mx-auto max-md:w-[96%]">
+              Founded in 2021, The Red Kapital has quickly grown from a small
+              financial service provider into a trusted and respected name in
+              the industry. With a strong focus on client satisfaction, we have
+              successfully served thousands of businesses and individuals,
+              providing them with the financial solutions they need to thrive.
+              Over the years, our commitment to innovation has allowed us to
+              expand our services and continuously adapt to the evolving needs
+              of the market. Our team of experts is dedicated to delivering
+              tailored financial strategies that empower clients to achieve
+              their goals, ensuring long-term success and growth for all.
             </p>
           </div>
 
           {/* Image and Stats */}
-          <div className="flex-1 p-4 min-md:pt-20">
+          <div className="flex-1 p-4 min-md:pt-20 ">
             <div className="relative box-border h-[500px] min-lg:p-16">
               <img
-                className="object-contain h-full w-full rounded-md"
+                className="object-cover h-full w-full rounded-md"
                 src="/images/history.jpg"
                 alt="Bank Group"
               />
               {/* Years of Experience Badge */}
-              <div className="absolute bottom-[10%] right-[10%] bg-[#f7191c] text-white w-[150px] h-[150px] border-[12px] border-white flex flex-col justify-center items-center">
-                <span className="font-extrabold text-6xl">7+</span>
+              <div className="absolute bottom-0 right-0 bg-[#f7191c] text-white w-[150px] h-[150px] border-[12px] border-white flex flex-col justify-center items-center">
+                <span className="font-extrabold text-6xl">3+</span>
                 <span className="font-normal text-[1rem] -mt-2">years</span>
               </div>
             </div>
@@ -596,7 +608,7 @@ function App() {
             {/* Left Arrow Button */}
             <button
               // style={{ width: "50px", height: "50px" }}
-              className="flex items-center justify-center w-[40px] h-[40px] bg-[#7d0800] text-white p-2 rounded-full absolute -left-2 top-1/2 transform -translate-y-1/2 hover:bg-[#5d0600] transition-all"
+              className="flex z-[1500] items-center justify-center w-[40px] h-[40px] bg-[#7d0800] text-white p-2 rounded-full absolute -left-2 top-1/2 transform -translate-y-1/2 hover:bg-[#5d0600] transition-all"
               onClick={prevSlide}
             >
               <i className="fa-solid fa-chevron-left text-2xl"></i>

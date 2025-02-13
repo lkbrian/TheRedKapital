@@ -181,7 +181,7 @@ export const aboutUs = [
   {
     title: "Values",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, quia minima esse nisi inventore et itaque blanditiis totam vero nobis, ad consequuntur odit libero. Eaque maiores iusto quasi placeat repellat?",
+      "Our company is built on a foundation of integrity, innovation, and customer-centricity. We foster collaboration, accountability, sustainability and diversity.",
   },
 ];
 export const FAQs = [
