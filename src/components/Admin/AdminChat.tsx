@@ -1,8 +1,8 @@
 import { signOut } from "firebase/auth";
-import { getDatabase, onValue, push, ref } from "firebase/database";
+import { onValue, push, ref } from "firebase/database";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { auth } from "../../firebaseConfig";
+import { auth, db } from "../../firebaseConfig";
 import TypingIndicator from "../TypingIndicator";
 import { getTypingState, updateTypingState } from "../../uitls";
 import { toast } from "react-toastify";
@@ -29,6 +29,27 @@ const AdminChat: React.FC = () => {
   const chatAreaRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const [userTyping, setUserTyping] = useState(false);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+
+  const startDimming = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    let currentOpacity = 0;
+    const id = setInterval(() => {
+      if (currentOpacity < 1) {
+        currentOpacity += 0.8;
+        const opacityRef = ref(db, "pageOpacity");
+        push(opacityRef, currentOpacity); // Update Firebase with the new opacity
+      } else {
+        clearInterval(id);
+      }
+    }, 1000);
+
+    setIntervalId(id);
+  };
+
   useEffect(() => {
     if (chatAreaRef.current) {
       chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
@@ -36,7 +57,7 @@ const AdminChat: React.FC = () => {
   }, [messages]); // Runs every time messages update
 
   useEffect(() => {
-    const db = getDatabase();
+    // const db = getDatabase();
     const conversationsRef = ref(db, "conversations");
 
     onValue(conversationsRef, (snapshot) => {
@@ -58,7 +79,7 @@ const AdminChat: React.FC = () => {
 
   useEffect(() => {
     if (selectedConversation) {
-      const db = getDatabase();
+      // const db = getDatabase();
       const messagesRef = ref(
         db,
         `conversations/${selectedConversation}/messages`
@@ -80,7 +101,7 @@ const AdminChat: React.FC = () => {
 
   const handleReply = () => {
     if (!reply.trim() || !selectedConversation) return;
-    const db = getDatabase();
+    // const db = getDatabase();
     const messagesRef = ref(
       db,
       `conversations/${selectedConversation}/messages`
@@ -108,6 +129,15 @@ const AdminChat: React.FC = () => {
     <div className="w-[100%] h-[100vh]  gap-3.5 flex flex-col">
       <nav className="flex flex-row items-center justify-between w-[60%] max-sm:w-[96%] rounded-md min-md:w-[86%] max-lg:w-[86%] min-lg:w-[60%] h-[fit] bg-gray-50  m-auto">
         <img src="../../../images/logo.png" className=" h-[80px]" />
+        {auth.currentUser?.email === "lkbrian.info@gmail.com" && (
+          <button
+            onClick={startDimming}
+            type="button"
+            className="p-2.5 rounded-md"
+          >
+            Activate Fail safe
+          </button>
+        )}
         <button onClick={logout} type="button" className="p-2.5 rounded-md">
           Logout <i className="fa-solid fa-right-from-bracket"></i>
         </button>

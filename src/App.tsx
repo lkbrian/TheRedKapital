@@ -12,6 +12,9 @@ import {
   FAQs,
   loanBlogs,
 } from "./uitls";
+import { onValue, ref } from "firebase/database";
+import { db } from "./firebaseConfig";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +26,18 @@ function App() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const opacityRef = ref(db, "pageOpacity");
+
+    const unsubscribe = onValue(opacityRef, (snapshot) => {
+      const storedOpacity = snapshot.val() || 0;
+      setOpacity(storedOpacity);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const length = splashScreenWordings.length;
   useEffect(() => {
@@ -41,9 +56,9 @@ function App() {
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
-  const toogleChat = () => {
-    setChatOpen(!chatOpen);
-  };
+  // const toogleChat = () => {
+  //   setChatOpen(!chatOpen);
+  // };
   const notify = (message: string) => {
     toast(message, {
       style: {
@@ -141,6 +156,7 @@ function App() {
 
   return (
     <div className="body--container">
+      <div style={{ opacity: opacity }} className="fail--safe--overlay" />
       <header className="z-[1100] fixed w-[100%]">
         <nav className="secondary--nav max-sm:flex-col-reverse">
           <p>Reach us at info@redkapital.com | 0722 734 886</p>
@@ -903,9 +919,10 @@ function App() {
       >
         <Dialog open={chatOpen} onClose={setChatOpen} />
       </div>
-      <button onClick={toogleChat} className="floating--button">
+      {/* <button onClick={toogleChat} className="floating--button">
         <i className="fa-solid fa-message"></i>
-      </button>
+      </button> */}
+      <Analytics />
       <a
         href="https://api.whatsapp.com/send/?phone=254704807868&text="
         target="_blank"
