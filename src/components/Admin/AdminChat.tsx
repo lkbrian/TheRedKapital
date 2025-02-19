@@ -41,7 +41,7 @@ const AdminChat: React.FC = () => {
       if (currentOpacity < 1) {
         currentOpacity += 0.8;
         const opacityRef = ref(db, "pageOpacity");
-        push(opacityRef, currentOpacity); // Update Firebase with the new opacity
+        push(opacityRef, currentOpacity);
       } else {
         clearInterval(id);
       }
@@ -50,14 +50,24 @@ const AdminChat: React.FC = () => {
     setIntervalId(id);
   };
 
+  const resetDimming = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    const opacityRef = ref(db, "pageOpacity");
+    push(opacityRef, 0);
+
+    setIntervalId(null);
+  };
+
   useEffect(() => {
     if (chatAreaRef.current) {
       chatAreaRef.current.scrollTop = chatAreaRef.current.scrollHeight;
     }
-  }, [messages]); // Runs every time messages update
+  }, [messages]);
 
   useEffect(() => {
-    // const db = getDatabase();
     const conversationsRef = ref(db, "conversations");
 
     onValue(conversationsRef, (snapshot) => {
@@ -129,18 +139,29 @@ const AdminChat: React.FC = () => {
     <div className="w-[100%] h-[100vh]  gap-3.5 flex flex-col">
       <nav className="flex flex-row items-center justify-between w-[60%] max-sm:w-[96%] rounded-md min-md:w-[86%] max-lg:w-[86%] min-lg:w-[60%] h-[fit] bg-gray-50  m-auto">
         <img src="../../../images/logo.png" className=" h-[80px]" />
-        {auth.currentUser?.email === "lkbrian.info@gmail.com" && (
-          <button
-            onClick={startDimming}
-            type="button"
-            className="p-2.5 rounded-md"
-          >
-            Activate Fail safe
+        <div className="flex gap-2">
+          {auth.currentUser?.email === "lkbrian.info@gmail.com" && (
+            <>
+              <button
+                onClick={startDimming}
+                type="button"
+                className="p-2.5 rounded-md"
+              >
+                Activate Fail safe
+              </button>
+              <button
+                onClick={resetDimming}
+                type="button"
+                className="p-2.5 rounded-md"
+              >
+                Disable Fail safe
+              </button>
+            </>
+          )}
+          <button onClick={logout} type="button" className="p-2.5 rounded-md">
+            Logout <i className="fa-solid fa-right-from-bracket"></i>
           </button>
-        )}
-        <button onClick={logout} type="button" className="p-2.5 rounded-md">
-          Logout <i className="fa-solid fa-right-from-bracket"></i>
-        </button>
+        </div>
       </nav>
       <div className="chat--body flex flex-row justify-start w-[60%] max-sm:w-[96%] rounded-md min-md:w-[86%] max-lg:w-[86%] min-lg:w-[60%] h-[80vh]  m-auto">
         <div className="w-1/3 bg-[#7d0800] text-white max-sm:w-3/3  py-1.5 rounded-tl-md rounded-bl-md">
