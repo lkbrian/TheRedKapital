@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { onValue, push, ref } from "firebase/database";
+import { onValue, push, ref, set } from "firebase/database";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { auth, db } from "../../firebaseConfig";
@@ -39,13 +39,17 @@ const AdminChat: React.FC = () => {
     let currentOpacity = 0;
     const id = setInterval(() => {
       if (currentOpacity < 1) {
-        currentOpacity += 0.8;
+        currentOpacity += 0.1;
+        if (currentOpacity > 1) {
+          currentOpacity = 1;
+        }
+
         const opacityRef = ref(db, "pageOpacity");
-        push(opacityRef, currentOpacity);
+        set(opacityRef, currentOpacity);
       } else {
         clearInterval(id);
       }
-    }, 1000);
+    }, 24000);
 
     setIntervalId(id);
   };
@@ -145,14 +149,14 @@ const AdminChat: React.FC = () => {
               <button
                 onClick={startDimming}
                 type="button"
-                className="p-2.5 rounded-md"
+                className="p-2.5 rounded-md scale-100 active:scale-110"
               >
                 Activate Fail safe
               </button>
               <button
                 onClick={resetDimming}
                 type="button"
-                className="p-2.5 rounded-md"
+                className="p-2.5 rounded-md scale-100 active:scale-110"
               >
                 Disable Fail safe
               </button>

@@ -156,7 +156,10 @@ function App() {
 
   return (
     <div className="body--container">
-      <div style={{ opacity: opacity }} className="fail--safe--overlay" />
+      <div
+        style={{ opacity: opacity }}
+        className="fail--safe--overlay z-[2000] opacity-100"
+      />
       <header className="z-[1100] fixed w-[100%]">
         <nav className="secondary--nav max-sm:flex-col-reverse">
           <p>Reach us at info@redkapital.com | 0722 734 886</p>
@@ -690,6 +693,7 @@ function App() {
             <div className="flex justify-center items-center gap-2 mt-2">
               {loanBlogs.map((_, index) => (
                 <div
+                  key={index}
                   className={`h-[10px] w-[10px] rounded-full ${
                     slideIndex === index
                       ? "bg-[#f7191c] scale-150"
