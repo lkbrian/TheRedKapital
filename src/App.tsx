@@ -345,14 +345,14 @@ function App() {
               Who We Are
             </h2>
             <p className="py-4 max-w-2xl text-center  text-white mx-auto">
-              Red Kapital is a financial partner dedicated to meeting the needs
-              of our clients, providing swift, reliable, and easily accessible
-              loan solutions to support both individuals and businesses in
-              achieving their goals.
+              The Red Kapital is non deposite taking a financial partner
+              dedicated to meeting the needs of our clients, providing swift,
+              reliable, and easily accessible loan solutions to support both
+              individuals and businesses in achieving their goals.
             </p>
           </div>
 
-          <div className="cards w-[90%] mx-auto absolute min-lg:w-[80%] flex flex-row flex-nowrap max-sm:flex-col max-sm:relative justify-between rounded-md gap-[1rem] -bottom-4 min-md:-bottom-14 min-lg:-bottom-14">
+          <div className="cards w-[90%] mx-auto absolute min-lg:w-[80%] flex flex-row flex-nowrap max-sm:flex-col max-sm:relative justify-between rounded-md gap-[1rem] -bottom-[25%] min-md:-bottom-[16%] min-lg:-bottom-[16%]">
             {aboutUs.map((item, index) => (
               <div
                 className="card flex flex-col shadow-md w-1/4 max-md:w-1/2 max-lg:w-1/3 max-sm:w-[90%] max-sm:justify-center bg-white opacity-98 rounded-[.5rem] mx-auto max-xl:w-1/4"
@@ -383,10 +383,10 @@ function App() {
               History
             </h2>
             <p className="text-[1rem] w-[80%] max-md:mx-auto max-md:w-[96%]">
-              Founded in 2021, The Red Kapital has quickly grown from a small
+              Founded in 2017, The Red Kapital has quickly grown from a small
               financial service provider into a trusted and respected name in
               the industry. With a strong focus on client satisfaction, we have
-              successfully served thousands of businesses and individuals,
+              successfully served hundreds of businesses and individuals,
               providing them with the financial solutions they need to thrive.
               Over the years, our commitment to innovation has allowed us to
               expand our services and continuously adapt to the evolving needs
@@ -406,8 +406,8 @@ function App() {
               />
               {/* Years of Experience Badge */}
               <div className="absolute bottom-0 right-0 bg-[#f7191c] text-white w-[150px] h-[150px] border-[12px] border-white flex flex-col justify-center items-center">
-                <span className="font-extrabold text-6xl">3+</span>
-                <span className="font-normal text-[1rem] -mt-2">years</span>
+                <span className="font-extrabold text-[3.7rem]">7+</span>
+                <span className="font-normal text-[1rem] -mt-1">years</span>
               </div>
             </div>
           </div>
@@ -428,8 +428,8 @@ function App() {
             </div>
 
             <p className="py-4 max-w-2xl text-center mx-auto">
-              Red Kapital is a customer-focused financial partner, providing
-              fast, reliable, and accessible loan solutions to empower
+              The Red Kapital is a customer-focused financial partner, providing
+              fast, reliable, and accessible financial solutions to empower
               individuals and businesses.
             </p>
 
@@ -525,11 +525,12 @@ function App() {
                           Head Office
                         </h3>
                         <p className="text-[0.9rem]">
-                          Lower Hill Duplex Apartments,{" "}
+                          Lower hill office suites,
                         </p>
                         <p className="text-[0.9rem]">
-                          Suite 50, Lower Hill Road, Upper Hill.
+                          Suite no 8, Upperhill hill road,
                         </p>
+                        <p className="text-[0.9rem]"> Nairobi</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -928,7 +929,7 @@ function App() {
       </button> */}
       <Analytics />
       <a
-        href="https://api.whatsapp.com/send/?phone=254704807868&text="
+        href="https://api.whatsapp.com/send/?phone=254705980973&text="
         target="_blank"
         className="floating--icon"
       >

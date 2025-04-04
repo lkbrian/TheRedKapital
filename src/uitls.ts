@@ -75,7 +75,7 @@ export const splashScreenWordings = [
       "Our loaning process is designed to support you at every stage, making your financial journey smoother and more accessible.",
   },
   {
-    title: "Fast, Flexible Loans When You Need Them Most!",
+    title: "Fast, Flexible Finacial solutions When You Need Them Most!",
     explanation:
       "We offer fast approval and flexible repayment options, ensuring you get the help you need quickly and on your terms.",
   },
@@ -111,14 +111,14 @@ export const productDescriptions = [
     name: "Invoice Discounting",
     image: "/images/IDiscounting.jpg",
     description:
-      "Loans for individuals who have delivered orders, issued invoices, and are awaiting payments, usually within 1-2 months.",
+      "Loans for individuals who have delivered orders, issued invoices, and are awaiting payments, usually within 14-30 days.",
   },
   {
     category: "Business Loans",
     name: "Cheque Discounting",
     image: "/images/chequeDiscounting.jpg",
     description:
-      "Loans based on post-dated cheques from reputable organizations like restaurants and hospitals. Loan term ranges from 1 week to 1 month.",
+      "Loans based on post-dated cheques from reputable organizations. Loan term ranges from 1 week to 1 month.",
   },
   {
     category: "Personal Loans",
@@ -132,14 +132,14 @@ export const productDescriptions = [
     name: "Trade Finance",
     image: "/images/tFinance.jpg",
     description:
-      "Includes Performance Bonds,Bid Bonds and Contractors All Risk.  facilitates transactions by mitigating risks through letters of credit, invoice financing, guarantees, and supply chain finance solutions.",
+      "Includes Bid Bonds,Performance bond, Contractors All Risk  and Advanced Payment Guarantees. Facilitating transactions by mitigating risks invoice financing, guarantees, and supply chain finance solutions.",
   },
 ];
 export const features = [
   {
     title: "Quick Approvals",
     description:
-      "Loan approvals in under an hour, with disbursements processed within 30 minutes.",
+      "Loan approvals in under an 24 hours, with disbursements processed within 1 hour.",
   },
   {
     title: "Hassle-Free Process",
@@ -188,7 +188,7 @@ export const FAQs = [
   {
     question: "Who is eligible to apply for a loan?",
     answer:
-      "We offer loans to individuals and businesses who meet our minimum credit score, income, and employment requirements. Applicants must be at least 18 years old, provide valid identification, and demonstrate a stable financial history. For business loans, we may require proof of revenue and operational history.",
+      "We offer financial solutions to clients who meet our minimum credit score, income, and employment requirements. Applicants must be at least 18 years old, provide valid identification, and demonstrate a stable financial history. For business loans, we may require proof of revenue and operational history.",
   },
   {
     question: "How long does it take to process a loan application?",
@@ -216,9 +216,9 @@ export const FAQs = [
       "Yes, we allow early loan repayment with no extra charges, helping you save on interest costs. Making extra payments or settling your loan ahead of schedule can reduce your overall financial burden. However, for specific loan types, it’s advisable to check your agreement for any prepayment conditions.",
   },
   {
-    question: "What types of loans do you offer?",
+    question: "What types of finacial solutions do you offer?",
     answer:
-      "We offer a range of loan products, including personal loans, business loans, mortgage loans, auto loans, and credit-building loans. Each loan type is designed to meet different financial needs, whether you're purchasing a home, expanding your business, or covering unexpected expenses. Contact us to find the best loan option for you.",
+      "We offer a range of loan products, including personal loans, business loans, mortgage loans, auto loans. Each loan type is designed to meet different financial needs, whether you're purchasing a home, expanding your business, or covering unexpected expenses. Contact us to find the best loan option for you.",
   },
 ];
 export const loanBlogs = [
